@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <html>
-	<head>
-		<title>FizzBuzz</title>
-	<link href="fizzbuzz.css" rel="stylesheet" type-"text/css" />
-	</head>
-	<body>
-		<h1> Welcome, username </h1>
-		<p> Your current FizzBuzz value is: <span id = "fizzBuzzValue"> 0 </span> </p>
-		<div class="center">
-			<button type="button" class="button" onclick="alert('Test')">Click to increment</button>
-		</div>
-	</body>
+  <head>
+    <title>FizzBuzz</title>
+    <link href="fizzbuzz.css" rel="stylesheet" type-"text/css" />
+  </head>
+  <body>
+    <h1> Welcome, username </h1>
+      <p> Your current FizzBuzz value is: <span id = "fizzBuzzValue"> 0 </span> </p>
+    <div class="center">
+      <button type="button" class="button" onclick="displayValue()">Click to increment</button>
+    </div>
+    <script>
+      function displayValue(){
+        xhttp.open("GET", 'http://basic-web.dev.avc.web.usf.edu')
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var value = xhttp.responseText;		
+          }
+          document.getElementById("fizzBuzzValue").innerHTML = value;
+        };
+      xhttp.open("GET", 'http://basic-web.dev.avc.web.usf.edu')
+      }
+    </script>
+  </body>
 </html>
