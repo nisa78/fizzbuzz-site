@@ -1,3 +1,7 @@
+#fizzBuzzValue {
+	
+}
+
 h1 {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	text-align: center;
@@ -7,3 +11,19 @@ p {
 	text-align: center;
 }
 
+.button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding 15px 32px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.button:hover {
+	cursor:pointer;
+}
+
+.center {
+	text-align: center;
+}
