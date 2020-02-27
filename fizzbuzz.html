@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<html>
-  <head>
+  <head onload = "getName()">
     <title>FizzBuzz</title>
-    <link href="fizzbuzz.css" rel="stylesheet" type-"text/css" />
+    <link href="fizzbuzz.css" rel="stylesheet" type="text/css"/>
   </head>
-  <body onload = "display()">
+  <body onload="display()">
     <h1> Welcome, <span id="username">username</span> </h1>
       <p> Your current FizzBuzz value is: <span id="fizzBuzzValue">0</span> </p>
     <div class="center">
@@ -13,9 +12,28 @@
     </div>
     <script src="main.js"></script>
     <script>
+      // Parsing through the URL to obtain the username inputted in index.html
+      function getQueryString() {
+        var result = {}, queryString = location.search.slice(1),
+            re = /([^&=]+)=([^&]*)/g, m;
+
+        while (m = re.exec(queryString)) {
+          result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+        }
+
+        return result;
+      }
+      var name = getQueryString()["username"];
+
+      function getName() {
+        document.getElementById("username").innerHTML = name;
+      }
+      
+
+      // Displaying the score from the server
       newScore = document.getElementById("fizzBuzzValue").innerHTML;
       function display() {
-        get("http://basic-web.dev.avc.web.usf.edu/" + "try").then(function(response) {
+        get("http://basic-web.dev.avc.web.usf.edu/" + name).then(function(response) {
           if(response.status == 200){
             const username = response.data.id; //The username that was requested. In this case it is "myUserName".
             const score = response.data.score; //The user's current score.
@@ -28,10 +46,12 @@
           else{
             //User "myUserName" not found.
             //response.data is null
-            post("http://basic-web.dev.avc.web.usf.edu/" + "try", { score: 0 }); //create a new user.
+            post("http://basic-web.dev.avc.web.usf.edu/" + name, { score: 0 }); //create a new user.
           }
         });
       }
+      
+      // Computing FizzBuzz and updating the user's score
       function displayScore() {
           newScore++;
           if((newScore % 3 == 0) && (newScore % 5 == 0)) {
@@ -46,9 +66,10 @@
           sendScore();
       }
 
+      // Updates the user's score on the server
       function sendScore() {
         const dataToSend = { score: newScore };
-        post("http://basic-web.dev.avc.web.usf.edu/" + "try", dataToSend).then(function(response){
+        post("http://basic-web.dev.avc.web.usf.edu/" + name, dataToSend).then(function(response){
           switch(response.status){
             case 200:
               //User was updated successfully.
@@ -72,6 +93,7 @@
           }
         });
       }
+      console.log(name);
     </script>
   </body>
 </html>

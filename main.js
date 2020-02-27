@@ -1,11 +1,3 @@
-username = 'TEST';
-function setUser(user) {
-  username = user;
-}
-
-function getUser() {
-  return username;
-}
 /**
  * Request json data from the back-end API. This function is used to read data from the API. To update data in the API, use post().
  * @param {string} url - The url of the API plus the API path.
