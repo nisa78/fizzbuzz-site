@@ -2,18 +2,47 @@
 <html>
   <head>
     <title>Log in</title>
-    <link href="main.css" rel="stylesheet" type-"text/css" />
+    <link href="main.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <h1> Welcome! </h1>
     <h2> Please log in! </h2>
-    <form>
+    <form action="file:///C:/Users/nisap/OneDrive/Desktop/FizzBuzz/fizzbuzz.html" method="post">
       <br>
       <label for="username">Username:</label><br>
-      <input type="text" id="username" name="username"><br>
+      <input type="text" id="username" name="username" onkeyup="sendUser()" onchange="sendUser()"><br>
       <label for="password">Password:</label><br>
-      <input type="text" id="password" name="password"><br><br>
+      <input type="password" id="password" name="password"><br><br>
       <input type="submit" value="Submit">
     </form>
+    <script src="main.js"></script>
+    <script>
+      function sendUser(){
+        const dataToSend = { id : document.getElementById("username").innerHTML };
+        post("http://basic-web.dev.avc.web.usf.edu/", dataToSend).then(function(response){
+          switch(response.status){
+            case 200:
+              //User was updated successfully.
+              //response.data will be the same as returned by get(), and should contain the updated data.
+              const name = response.data.id;
+              break;
+            case 201:
+              //A new user was successfully created. Otherwise same as status 200.
+              const newname = response.data.id;
+              break;
+            case 400:
+              //Bad request. Most likely your data that you sent (in this case dataToSend) was formatted incorrectly, or you supplied a negative score value.
+              //response.data will be: { Error: "error message" }
+              console.error(response.data);
+              break;
+            case 500:
+              //Something went wrong on the server, such as the database got deleted somehow. This should never happen.
+              //response.data will be the same as status 400.
+              console.error(response.data);
+              break;
+          }
+        });
+      }
+    </script>
   </body>
 </html>
