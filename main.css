@@ -6,7 +6,7 @@
 
 html, body {
   height: 100%;
-  background-color: #333;
+  background-color: rgb(41, 41, 41);
 }
 
 body {
@@ -27,30 +27,44 @@ h2{
   font-size: 2rem;
 }
 
+h3{
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+}
+
 p{
   text-align: center;
 }
 
 form {
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: 10rem;
+  margin-right: 10rem;
   border-style: solid;
   border-width: 5px;
   border-radius: 10px;
-  background-color:white;
+  background-color:whitesmoke;
   text-align: center;
+  padding-bottom: 0.5rem;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+input[type=submit] {
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 1rem 3rem;
+  padding: 1rem 3.5rem;
   font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition-duration: 0.4s;
+}
+input[type=submit]:hover{
+background-color: rgb(66, 150, 69);
 }
 
 input[type="text"]{
-  padding: 0.5rem 3rem;
+  padding: 0.25rem 1rem;
+  font-size: 1.75rem;
 }
 
 label[for=username]{
@@ -59,10 +73,31 @@ label[for=username]{
   font-weight: bold;
 }
 
-.jumbotron {
-  background-color: blue;
-}
-
 .btn {
   background-color: white;
+  transition-duration: 0.4s;
+}
+
+.btn:hover {
+  background-color: rgb(231, 231, 231);
+
+}
+
+.jumbotron{
+  margin-left: 18rem;
+  margin-right: 18rem;
+  background-color: whitesmoke;
+}
+
+#increment{
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  transition-duration: 0.4s;
+}
+
+#increment:hover {
+  background-color: rgb(66, 150, 69);
 }
