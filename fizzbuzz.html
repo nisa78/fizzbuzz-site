@@ -29,14 +29,13 @@
         document.getElementById("username").innerHTML = name;
       }
       
-
       // Displaying the score from the server
       newScore = document.getElementById("fizzBuzzValue").innerHTML;
       function display() {
         get("http://basic-web.dev.avc.web.usf.edu/" + name).then(function(response) {
           if(response.status == 200){
-            const username = response.data.id; //The username that was requested. In this case it is "myUserName".
-            const score = response.data.score; //The user's current score.
+            const username = response.data.id; // The username that was requested
+            const score = response.data.score; // The user's current score
             document.getElementById("username").innerHTML = username;
             document.getElementById("fizzBuzzValue").innerHTML = score;
             newScore = score - 1
@@ -44,9 +43,10 @@
             newScore = score;
           }
           else{
-            //User "myUserName" not found.
-            //response.data is null
-            post("http://basic-web.dev.avc.web.usf.edu/" + name, { score: 0 }); //create a new user.
+            // User not found.
+            // response.data is null
+            post("http://basic-web.dev.avc.web.usf.edu/" + name, { score: 0 }); // Create a new user.
+            refresh(); // Refresh page to properly display username
           }
         });
       }
@@ -54,11 +54,11 @@
       // Computing FizzBuzz and updating the user's score
       function displayScore() {
           newScore++;
-          if((newScore % 3 == 0) && (newScore % 5 == 0)) {
+          if((newScore % 3 == 0) && (newScore % 5 == 0) && (newScore != 0)) {
             document.getElementById("fizzBuzzValue").innerHTML = "FizzBuzz";
-          } else if (newScore % 3 == 0) {
+          } else if ((newScore % 3 == 0) && newScore != 0) {
             document.getElementById("fizzBuzzValue").innerHTML = "Fizz";
-          } else if (newScore % 5 == 0) {
+          } else if ((newScore % 5 == 0) && newScore != 0) {
             document.getElementById("fizzBuzzValue").innerHTML = "Buzz";
           } else {
             document.getElementById("fizzBuzzValue").innerHTML = newScore;
@@ -72,28 +72,37 @@
         post("http://basic-web.dev.avc.web.usf.edu/" + name, dataToSend).then(function(response){
           switch(response.status){
             case 200:
-              //User was updated successfully.
-              //response.data will be the same as returned by get(), and should contain the updated data.
+              // User was updated successfully.
+              // response.data will be the same as returned by get(), and should contain the updated data.
               const updatedScore = response.data.score;
               break;
             case 201:
-              //A new user was successfully created. Otherwise same as status 200.
+              // A new user was successfully created. Otherwise same as status 200.
               const newScore = response.data.score;
               break;
             case 400:
-              //Bad request. Most likely your data that you sent (in this case dataToSend) was formatted incorrectly, or you supplied a negative score value.
-              //response.data will be: { Error: "error message" }
+              // Bad request. Most likely your data that you sent (in this case dataToSend) was formatted incorrectly, or you supplied a negative score value.
+              // response.data will be: { Error: "error message" }
               console.error(response.data);
               break;
             case 500:
-              //Something went wrong on the server, such as the database got deleted somehow. This should never happen.
-              //response.data will be the same as status 400.
+              // Something went wrong on the server, such as the database got deleted somehow. This should never happen.
+              // response.data will be the same as status 400.
               console.error(response.data);
               break;
           }
         });
       }
-      console.log(name);
+      
+      // Refreshes page after 0.25 seconds
+      function refresh() {
+        setTimeout(function() {
+          if(window.location.hash != '#r') {
+              window.location.hash = 'r';
+              window.location.reload(1);
+          }
+        }, 250);
+      }
     </script>
   </body>
 </html>
