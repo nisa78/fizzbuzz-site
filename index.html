@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Log in</title>
-    <link href="main.css" rel="stylesheet" type-"text/css" />
-  </head>
+    <link href="main.css" rel="stylesheet" type="text/css">
   <body>
-    <h1> Welcome! </h1>
-    <h2> Please log in! </h2>
-    <form>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col">
+          <h1> Welcome to FizzBuzz.</h1>
+            <h2> Please provide us with your name. </h2>
+            <br>
+            <form action="fizzbuzz.html" method="GET">
+              <br>
+              <label for="username">Username:</label><br>
+              <input type="text" id="username" name="username" onkeyup="sendUser(), setUser()" onchange="sendUser(), setUser()"><br><br>
+              <input type="submit" value="Submit">
+            </form>
+            <br>
+            <p><a href="fizzbuzz.html" class="btn btn-default btn-lg" role="button">Click Here to Play!</a></p>
+        </div>
+      </div>
+    </div>
+    <!--
+    <form action="fizzbuzz.html" method="GET">
       <br>
       <label for="username">Username:</label><br>
       <input type="text" id="username" name="username"><br>
@@ -15,5 +31,25 @@
       <input type="text" id="password" name="password"><br><br>
       <input type="submit" value="Submit">
     </form>
+  -->
+    <script src="main.js"></script>
+    <script>
+      function sendUser(){
+         get("http://basic-web.dev.avc.web.usf.edu/" + document.getElementById("username").innerHTML).then(function(response){
+          if(response.status == 200){
+            const username = response.data.id; //The username that was requested. In this case it is "myUserName".
+            const score = response.data.score; //The user's current score.
+          }
+          else{
+            //User "myUserName" not found.
+            //response.data is null
+            post("http://basic-web.dev.avc.web.usf.edu/" + document.getElementById("username").innerHTML, { score: 0 }); //create a new user.
+          }
+        });
+      }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
