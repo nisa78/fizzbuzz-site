@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head onload = "getName()">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>FizzBuzz</title>
-    <link href="fizzbuzz.css" rel="stylesheet" type="text/css"/>
+    <link href="main.css" rel="stylesheet" type="text/css"/>
   </head>
   <body onload="display()">
-    <h1> Welcome, <span id="username">username</span> </h1>
-      <p> Your current FizzBuzz value is: <span id="fizzBuzzValue">0</span> </p>
-    <div class="center">
-      <button type="button" class="button" onclick="displayScore()" onload="display()">Click to increment</button>
+    <div class="container-fluid bounceIn animated">
+      <div class="row justify-content-center">
+        <div class="col">
+          <h1> Welcome, <span id="username">username</span></h1>
+          <br><br>
+          <div class="jumbotron">
+            <h3> Your current FizzBuzz value is: <span id = "fizzBuzzValue">0</span></h3>
+            <br>
+            <p><button type="button" id="increment" class="btn btn-default btn-lg" role="button" onclick="displayScore()" onload="display()">Click to increment</button></p>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="main.js"></script>
     <script>
       // Parsing through the URL to obtain the username inputted in index.html
       function getQueryString() {
@@ -104,5 +112,9 @@
         }, 250);
       }
     </script>
+    <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>

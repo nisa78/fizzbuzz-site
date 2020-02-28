@@ -1,38 +1,94 @@
-body {
+/* body {
   background-color: white;
   background-image: linear-gradient(green, white);
   background-repeat: repeat-x;
+} */
+
+html, body{
+  height: 100%;
+  background-color: rgb(41, 41, 41);
+}
+
+body{
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  text-shadow: 0 0.05rem 0.1rem rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
 }
 
 h1{
-  font-family: Georgia, "Times New Roman", Times, serif;
   text-align: center;
+  font-size: 5rem;
 }
 
 h2{
   text-align: center;
+  font-size: 2rem;
 }
 
-form {
-  margin-left: 25%;
-  margin-right: 25%;
-  border-style: solid;
-  border-width: 5px;
-  border-radius: 10px;
-  background-color:white;
+h3{
+  text-align: center;
+  font-size: 2rem;
+  color: black;
+}
+
+p{
   text-align: center;
 }
 
-input[type=button], input[type=submit], input[type=reset] {
+form{
+  margin-left: 10rem;
+  margin-right: 10rem;
+  border-style: solid;
+  border-width: 5px;
+  border-radius: 10px;
+  background-color:whitesmoke;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+input[type=submit]{
   background-color: #4CAF50;
   border: none;
   color: white;
-  padding: 8px 16px;
-  font-size: 16px;
+  padding: 1rem 3.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  transition-duration: 0.4s;
+}
+input[type=submit]:hover{
+  background-color: rgb(66, 150, 69);
+  color: white;
 }
 
-label[for=username], label[for=password]{
-  font-family: Georgia, "Times New Roman", Times, serif;
+input[type="text"]{
+  padding: 0.25rem 1rem;
+  font-size: 1.75rem;
+}
+
+label[for=username]{
+  font-size: 2rem;
   color: black;
   font-weight: bold;
+}
+
+.jumbotron{
+  margin-left: 18rem;
+  margin-right: 18rem;
+  background-color: whitesmoke;
+}
+
+#increment{
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  transition-duration: 0.4s;
+}
+
+#increment:hover{
+  background-color: rgb(66, 150, 69);
 }
