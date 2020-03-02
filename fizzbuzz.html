@@ -22,7 +22,7 @@
     <script>
       // Parsing through the URL to obtain the username inputted in index.html
       function getQueryString() {
-        var result = {}, queryString = location.search.slice(1),
+        let result = {}, queryString = location.search.slice(1),
             re = /([^&=]+)=([^&]*)/g, m;
 
         while (m = re.exec(queryString)) {
@@ -31,7 +31,7 @@
 
         return result;
       }
-      var name = getQueryString()["username"];
+      let name = getQueryString()["username"];
 
       function getName() {
         document.getElementById("username").innerHTML = name;
