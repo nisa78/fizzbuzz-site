@@ -88,6 +88,7 @@ label[for=username]{
 }
 
 #animation {
+  transform:rotateY(180deg);
   width: 100px;
   height: 100px;
   position: relative;
@@ -95,16 +96,18 @@ label[for=username]{
   animation-duration: 50s;
   animation-delay: 0s;
   animation-iteration-count: infinite;
-  animation-direction: alternate;
+  animation-direction: reverse;
   animation-timing-function: ease;
 }
 
 #animation:hover{
   opacity: 0.5;
+  cursor: pointer;
 }
 
 @keyframes bee {
-  0%   {left:0rem; top:0rem;}
+  0%   {left:0rem; top:0rem; transform:rotateY(180deg);}
+  1%   {transform:rotateY(180deg);}
   5%   {left:2rem; top:10rem;}
   10%  {left:-3rem; top:23rem;}
   15%  {left:0rem; top:30rem;}
@@ -114,7 +117,8 @@ label[for=username]{
   35%  {left:65rem; top:30rem;}
   40%  {left:67rem; top:24rem;}
   45%  {left:64rem; top:11rem;}
-  50%  {left:65rem; top:0rem;}
+  49%  {transform:rotateY(0deg);}
+  50%  {left:65rem; top:0rem; transform:rotateY(0deg);}
   55%  {left:66rem; top:10rem;}
   60%  {left:62rem; top:22rem;}
   65%  {left:65rem; top:30rem;}
@@ -124,5 +128,12 @@ label[for=username]{
   85%  {left:0rem; top:30rem;}
   90%  {left:3rem; top:22rem;}
   95%  {left:-1rem; top:15rem;}
-  100% {left:0rem; top:0rem;}
+  99%  {transform:rotateY(180deg);}
+  100% {left:0rem; top:0rem; transform:rotateY(180deg);}
+  from {
+    transform: rotate(20deg);
+  }
+  to {
+    transform: rotate(-20deg);
+  }
 }
