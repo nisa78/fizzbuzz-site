@@ -5,12 +5,12 @@
     <title>Log in</title>
     <link href="main.css" rel="stylesheet" type="text/css">
   <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div id="animation" onclick="playSound()">
+    <main class="container">
+      <main class="row justify-content-center">
+        <figure id="animation" onclick="playSound()">
           <img src="bee.png" alt="Bee">
-        </div>
-        <div class="col">
+        </figure>
+        <main class="col">
           <h1> Welcome to FizzBuzz.</h1>
           <h2> Please provide us with your name. </h2>
           <br>
@@ -20,9 +20,9 @@
             <input type="text" id="username" name="username" onkeyup="checkUser()" onchange="checkUser()"><br><br>
             <input type="submit" value="Submit" class="btn btn-default btn-lg">
           </form>
-        </div>
-      </div>
-    </div>
+        </main>
+      </main>
+    </main>
     <script src="main.js"></script>
     <script>
       // Checks to see if user exists already, if not, create a new user with score of 0.

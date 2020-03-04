@@ -6,19 +6,19 @@
     <link href="main.css" rel="stylesheet" type="text/css"/>
   </head>
   <body onload="display()">
-    <div class="container-fluid bounceIn animated">
-      <div class="row justify-content-center">
-        <div class="col">
+    <main class="container-fluid bounceIn animated">
+      <main class="row justify-content-center">
+        <main class="col">
           <h1> Welcome, <span id="username">username</span></h1>
           <br><br>
-          <div class="jumbotron">
+          <section class="jumbotron">
             <h3> Your current FizzBuzz value is: <span id = "fizzBuzzValue">0</span></h3>
             <br>
             <p><button type="button" id="increment" class="btn btn-default btn-lg" role="button" onclick="displayScore()" onload="display()">Click to increment</button></p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </section>
+        </main>
+      </main>
+    </main>
     <script>
       // Parsing through the URL to obtain the username inputted in index.html
       function getQueryString() {
